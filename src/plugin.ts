@@ -25,7 +25,13 @@ export class RevealActiveFileButtonPlugin extends Plugin {
       id: 'reveal-active-file',
       name: 'Reveal Active File',
       callback: () => {
+        // @ts-ignore
         this.app.commands.executeCommandById('file-explorer:reveal-active-file');
+        // Send the command twice like a double-click, to handle the frequent case where Obsidian fails to jump to the file
+        setTimeout(() => {
+          // @ts-ignore
+          this.app.commands.executeCommandById('file-explorer:reveal-active-file');
+        }, 50)
       },
     });
   }
