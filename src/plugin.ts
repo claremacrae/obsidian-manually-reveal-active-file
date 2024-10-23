@@ -20,6 +20,14 @@ export class RevealActiveFileButtonPlugin extends Plugin {
         });
       })
     );
+
+    this.addCommand({
+      id: 'reveal-active-file',
+      name: 'Reveal Active File',
+      callback: () => {
+        this.app.commands.executeCommandById('file-explorer:reveal-active-file');
+      },
+    });
   }
 
   onunload(): void {
